@@ -7,11 +7,7 @@ $.getJSON("/articles", function(data) {
     var date = data[i].date;
     var link = data[i].link;
 
-    // $("#articles").append("<p data-id='" + data[i]._id + "'><h1>" + title+ "</h1> <h3>Filed on "+ date +"</h3><br /><a href='https://" + link + "'>File  Link</a></p>");
-
-    $("#articles").append("<div class = card data-id ='" + data[i]._id + "' id = eventCards>" + "<h1 id = cheader>" +  title + "</h1>" + '<h3 class = infor>Filed on ' + date + '</h3>' + '<br>' + "<a class='btn btn-primary' href='https://" + link + "'>File  Link</a><button type='button' class='btn btn-info'>Notes</button></div>");
-    
-    // "<button type='button' class='btn btn-info'>Link to</button></div>");
+    $("#articles").append("<div class = card data-id ='" + data[i]._id + "' id = eventCards>" + "<h1 id = cheader>" +  title + "</h1>" + '<h3 class = infor>Filed on ' + date + '</h3>' + '<br>' + "<a class='btn btn-primary' href='https://" + link + "' target = '_blank'>File  Link</a><button type='button' class='btn btn-info' data-id ='" + data[i]._id + "'>Notes</button></div>");
   }
 });
 
@@ -32,7 +28,7 @@ $(document).on("click", "button", function() {
     .then(function(data) {
       console.log(data);
       // The title of the article
-      $("#notes").append("<h2>" + data.title + "</h2>");
+      $("#notes").append("<h2>" + data.title + "</h2>" + " Filed on " + data.date);
       // An input to enter a new title
       $("#notes").append("<input id='titleinput' name='title' >");
       // A textarea to add a new note body
